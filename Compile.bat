@@ -1,0 +1,5 @@
+@echo
+d:
+cd d:\Jarvis
+python -m nuitka --onefile --include-data-dir=".\resources=resources/" --include-data-dir="C:\\Users\\%username%\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\pvporcupine\\resources=pvporcupine/resources/" --include-data-files="C:\\Users\\%username%\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\pvporcupine\\lib\\windows\\amd64\\libpv_porcupine.dll=pvporcupine/lib/windows/amd64/libpv_porcupine.dll" --include-data-files="C:\\Users\\%username%\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\pvporcupine\\lib\\common\\porcupine_params.pv=pvporcupine/lib/common/porcupine_params.pv" --include-data-dir="C:\\Users\\%username%\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\AppOpener\\Data=AppOpener/Data" --include-module=pyttsx3.drivers.sapi5 --windows-icon-from-ico=".\\Icon\\logo-search-grid-1x(2).ico" Charles2.0.py
+pause
