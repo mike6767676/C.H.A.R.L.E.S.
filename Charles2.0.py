@@ -23,9 +23,12 @@ import configparser
 # Get the base directory of the script
 base_path = os.path.dirname(os.path.abspath(__file__))
 
+#get login
+username = os.getlogin()
+
+
 #settings
 settings = os.path.join(base_path, "resources\Settings.ini")
-# Read strings from the file
 config = configparser.ConfigParser()
 config.read(settings)
 USER = config['strings']['USER']
@@ -39,6 +42,8 @@ openai.api_key = config['strings']['openai.api_key']
 #home assistant
 ServerURL = config['strings']['ServerURL']
 Access_Token = config['strings']['Access_Token']
+HAURL = config['strings']['HAURL']
+
 #weather
 Base_URL = "https://api.openweathermap.org/data/2.5/weather?"
 API_KEY = "930c9d3b79ad06aeeca1414e2a783b23"
@@ -94,9 +99,9 @@ def main():
         with sr.Microphone() as source:
             r.adjust_for_ambient_noise(source)
 
-            engine.say("what would you like jack?")
+            engine.say("what would you like",USER+"?")
             engine.runAndWait()
-            print ("What would you like Jack?")
+            print ("what would you like",USER+"?")
 
             audio1 = r.listen(source)
 
@@ -248,7 +253,7 @@ def main():
 
         #home assistant
         if audio =="open Home assistant":
-            webbrowser.open("https://niesenhome.duckdns.org:8123/lovelace/home")
+            webbrowser.open(HAURL)
             engine.say("opening")
             engine.runAndWait()
             print("Opening...")
@@ -273,17 +278,9 @@ def main():
             
             wake_word()
 
-        #keegan's dum request
-        if audio == "you're gay Charles" or audio == "you're gay" or audio == "Charles you're gay":
-            engine.say("you're stupid keegan")
-            engine.runAndWait()
-            print("You're stupid keegan!!!")
-            
-            wake_word()
-
         #vscode
         if audio =="open Visual Studio code" or audio =="open vs code":
-            os.startfile("C:/Users/jacks/AppData/Local/Programs/Microsoft VS Code/Code.exe")
+            os.startfile("C:/Users/"+username+"/AppData/Local/Programs/Microsoft VS Code/Code.exe")
             engine.say("opening")
             engine.runAndWait()
             print("Opening...")
@@ -429,7 +426,7 @@ def main():
         
         #discord
         if audio =="open Discord":
-            os.startfile("C:/Users/jacks/AppData/Local/Discord/app-1.0.9015/Discord.exe")
+            os.startfile("C:/Users/"+username+"/AppData/Local/Discord/app-1.0.9015/Discord.exe")
             engine.say("opening")
             engine.runAndWait()
             print("Opening...")
